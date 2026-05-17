@@ -242,6 +242,10 @@
     transition: all 0.2s;
     margin-top: 15px;
     z-index: 10;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
 }
 
 .copy-btn:hover {
@@ -439,6 +443,9 @@ async function loadRandomEntry() {
             <div class="text-content">${article.text}</div>
             <div class="reference"><strong>From:</strong> ${referenceHTML}</div>
             <div style="display: flex; gap: 10px; margin-top: 15px;">
+                <button class="copy-btn" id="btn-download">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width: 1.1rem; height: 1.1rem; display: inline-block;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                </button>
                 <button class="copy-btn" id="copy-text-btn">📋 Copy Text</button>
                 <button class="copy-btn" id="btn-toggle-fav"></button>
             </div>
@@ -447,6 +454,12 @@ async function loadRandomEntry() {
 
         updateFavButtonUI();
         mainContent.scrollTop = 0;
+
+        // Download Button
+        document.getElementById('btn-download').addEventListener('click', (e) => {
+            e.stopPropagation();
+            window.open('https://github.com/meormine/asubha-practice/releases', '_blank');
+        });
 
         // Image Click
         document.getElementById('display-img').addEventListener('click', (e) => {
@@ -495,7 +508,7 @@ btnViewFavs.addEventListener('click', (e) => {
     const favs = getFavorites();
     
     if (favs.length === 0) {
-        alert("Bạn chưa có mục yêu thích nào!");
+        alert("You don't have any favorites yet!");
         return;
     }
 
