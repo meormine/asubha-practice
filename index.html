@@ -150,8 +150,6 @@
     }
 }
 
-
-
         .reference {
             font-size: 0.95rem;
             color: var(--text-muted);
@@ -168,7 +166,8 @@
             margin-top: 20px;
             opacity: 0.6;
         }
-/* --- Modal (Fullscreen Image) Styling --- */
+        
+        /* --- Modal (Fullscreen Image) Styling --- */
         .modal {
             display: none; /* Hidden by default */
             position: fixed;
@@ -177,13 +176,13 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
+            background-color: rgba(0, 0, 0, 0.85);
             align-items: center;
             justify-content: center;
             backdrop-filter: blur(5px);
         }
 
- .modal-content {
+        .modal-content {
             max-width: 95vw;
             max-height: 95vh;
             object-fit: contain;
@@ -193,6 +192,68 @@
             /* Scale from the center of the image */
             transform-origin: center; 
 			transition: transform 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        /* --- Info Content Modal Styling --- */
+        .info-modal-panel {
+            background-color: var(--bg-panel);
+            color: var(--text-main);
+            padding: 40px 30px 30px 30px;
+            border-radius: 12px;
+            max-width: 680px;
+            width: 90%;
+            max-height: 85vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+            border: 1px solid var(--border);
+            line-height: 1.65;
+            user-select: text; /* Allow users to copy content inside info modal */
+        }
+
+        .info-modal-panel h2 {
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.35rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 6px;
+        }
+
+        .info-modal-panel h3 {
+            margin-top: 20px;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        .info-modal-panel p, .info-modal-panel ul {
+            margin-bottom: 16px;
+        }
+
+        .info-modal-panel ul {
+            padding-left: 22px;
+        }
+
+        .info-modal-panel li {
+            margin-bottom: 8px;
+        }
+
+        .info-modal-panel hr {
+            border: 0;
+            border-top: 1px dashed var(--border);
+            margin: 25px 0;
+        }
+
+        .info-modal-panel a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .info-modal-panel a:hover {
+            text-decoration: underline;
+        }
+
+        body.light-mode .info-modal-panel a {
+            color: #2e5fb7;
         }
 
         @keyframes zoom {
@@ -215,70 +276,135 @@
         .close-btn:hover {
             color: var(--accent);
         }
+
+        #close-info-modal {
+            top: 15px;
+            right: 20px;
+            color: var(--text-muted);
+        }
+
+        #close-info-modal:hover {
+            color: var(--text-main);
+        }
 		
 		/* --- Reference Link Styling --- */
-.reference a {
-    color: var(--accent);
-    text-decoration: none;
-    transition: opacity 0.2s;
-}
+        .reference a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
 
+        .reference a:hover {
+            text-decoration: underline;
+            opacity: 0.8;
+        }
 
+        /* --- Copy Button Styling --- */
+        .copy-btn {
+            background-color: transparent;
+            color: var(--text-muted);
+            border: 1px solid var(--border);
+            padding: 6px 16px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 15px;
+            z-index: 10;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
 
-.reference a:hover {
-    text-decoration: underline;
-    opacity: 0.8;
-}
+        .copy-btn:hover {
+            background-color: var(--bg-hover);
+            color: var(--text-main);
+            border-color: var(--text-muted);
+        }
 
-/* --- Copy Button Styling --- */
-.copy-btn {
-    background-color: transparent;
-    color: var(--text-muted);
-    border: 1px solid var(--border);
-    padding: 6px 16px;
-    border-radius: 6px;
-    font-size: 0.85rem;
-    cursor: pointer;
-    transition: all 0.2s;
-    margin-top: 15px;
-    z-index: 10;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-}
+        /* Specific color for Light Mode as requested */
+        body.light-mode .reference a {
+            color: #2e5fb7;
+        }
+        /* Hide the light-mode icon by default (Dark Mode) */
+        .icon-light {
+            display: none;
+        }
 
-.copy-btn:hover {
-    background-color: var(--bg-hover);
-    color: var(--text-main);
-    border-color: var(--text-muted);
-}
+        body.light-mode .icon-light {
+            display: inline-block;
+            font-size: 1.1em; 
+            
+        }
 
-/* Specific color for Light Mode as requested */
-body.light-mode .reference a {
-    color: #2e5fb7;
-}
-/* Hide the light-mode icon by default (Dark Mode) */
-.icon-light {
-    display: none;
-}
-
-body.light-mode .icon-light {
-    display: inline-block;
-    font-size: 1.1em; 
-    
-}
-
-body.light-mode .icon-dark {
-    display: none;
-}
+        body.light-mode .icon-dark {
+            display: none;
+        }
     </style>
 </head>
 <body>
-<div id="image-modal" class="modal">
+    <div id="image-modal" class="modal">
         <span class="close-btn" id="close-modal"><i class="fas fa-xmark"></i></span>
         <img class="modal-content" id="modal-img">
     </div>
+
+    <div id="info-modal" class="modal">
+        <div class="info-modal-panel">
+            <span class="close-btn" id="close-info-modal"><i class="fas fa-xmark"></i></span>
+            <p>The newly developed <strong>Asubha Practice</strong> web application is designed to be highly intuitive and straightforward, focusing directly on delivering content without unnecessary technical complexity. Rather than focusing on the mechanics of the application, this post explores the profound psychological benefits of <em>asubha-bhāvanā</em> (contemplation of the unbeautiful/foulness of the body) and how this tool can support daily practice.</p>
+            
+            <hr>
+            
+            <h2>The Pathogen: Rāga-Taṇhā as a Mental Disease</h2>
+            <p>In the Theravada suttas, unwholesome roots are frequently compared to illnesses. <em>Rāga-taṇhā</em> (sensual and sexual craving) is not merely a passing emotion; it operates as a powerful, deeply entrenched mental disease.</p>
+            <p>This craving can be accurately likened to a biological virus:</p>
+            <ul>
+                <li><strong>Infection and Replication:</strong> Once a sensual object triggers the mind, the virus of lust infects consciousness, rapidly replicating unwholesome thoughts (<em>akusala-vitakka</em>).</li>
+                <li><strong>Destruction of Faculty:</strong> It consumes mental clarity, destroys spiritual faculties (<em>indriya</em>), and impairs wisdom.</li>
+                <li><strong>Transmission and Exploitation:</strong> Left unchecked, it drives behavior that causes immense suffering, spreading its destructive consequences to others. Extreme historical and contemporary examples of moral downfall—such as the systemic exploitation seen in the case of Jeffrey Epstein—demonstrate how devastatingly this mental pathogen can completely hijack a human being.</li>
+                <li><strong>Samsaric Victims:</strong> While society rightly condemns the actions of such individuals, a deeper Dhamma perspective reveals them as tragic ultimate victims of their own untamed <em>taṇhā</em>. They are deeply infected hosts wandering blindly through <em>saṃsāra</em>, entirely subjugated by delusion and bound to severe karmic results.</li>
+            </ul>
+            
+            <hr>
+            
+            <h2>The Prescription: The Buddha as the Supreme Physician</h2>
+            <p>Fortunately, the Buddha is recognized as the <em>Bhisakka</em>—the Supreme Physician. The fully enlightened mind diagnosed this pathogen and prescribed a highly specific antidote: <strong>Asubha Contemplation</strong>.</p>
+            <p>If <em>rāga-taṇhā</em> is the virus, <em>asubha</em> is the targeted antiviral therapy. The Dhamma provides a complete framework to entirely eradicate this infection and restore ultimate mental health (<em>Nibbāna</em>).</p>
+            
+            <h3>The Beginner Level: Managing the Viral Load</h3>
+            <p>For most practitioners, completely wiping out sexual craving requires advanced stages of enlightenment (specifically <em>Anāgāmi</em>, the Non-Returner stage). However, consistent daily use of this application serves as a potent preventative dose.</p>
+            <ul>
+                <li>It drastically reduces the "viral load" of lust within the mental stream.</li>
+                <li>It weakens the immediate grip of hindrances (<em>nīvaraṇa</em>), providing immediate mental coolness, clarity, and manageable psychological health in daily life.</li>
+            </ul>
+            
+            <h3>The Advanced Level: Developing Jhāna</h3>
+            <p>For those wishing to progress to advanced levels of concentration, <em>asubha</em> serves as a direct vehicle for <em>samatha</em> (tranquility) meditation.</p>
+            <ul>
+                <li>Through sustained and systematic contemplation, the initial visual object transforms into the <em>uggaha-nimitta</em> (learning sign) and eventually matures into the brilliant <em>paṭibhāga-nimitta</em> (counterpart sign).</li>
+                <li>This purification of mind leads directly to the attainment of the first <em>jhāna</em>.</li>
+            </ul>
+            <p>For detailed, technical instructions on transitioning from basic <em>asubha</em> images to advanced <em>jhāna</em> states, the comprehensive meditation manuals of Venerable Pa-Auk Sayadaw provide authoritative and proper guidance. The following core texts are highly recommended for proper study:</p>
+            <ul>
+                <li><strong><a href="http://www.dhammatalks.net/Books10/Pa_Auk_Sayadaw-Light_of_Wisdom.pdf" target="_blank" rel="noopener noreferrer">Light of Wisdom (PDF)</a></strong></li>
+                <li><strong><a href="http://www.dhammatalks.net/Books13/Pa-Auk-Sayadaw_Knowing-and-Seeing-4th-Ed-2010.pdf" target="_blank" rel="noopener noreferrer">Knowing and Seeing (PDF)</a></strong></li>
+            </ul>
+            
+            <hr>
+            
+            <h2>Access the Tool</h2>
+            <p>The web application randomly pairs <em>asubha</em> visual references with relevant Dhamma texts to disrupt routine mental perceptions of the body.</p>
+            <ul>
+                <li><strong>Application Link:</strong> <a href="https://meormine.github.io/asubha-practice" target="_blank" rel="noopener noreferrer">https://meormine.github.io/asubha-practice</a></li>
+                <li><strong>Alternative Link:</strong> <a href="https://asubhapractice.blogspot.com" target="_blank" rel="noopener noreferrer">https://asubhapractice.blogspot.com</a></li>
+                <li><strong>Android App:</strong> <a href="https://archive.org/download/asubha-practice" target="_blank" rel="noopener noreferrer">https://archive.org/download/asubha-practice</a></li>
+                <li><strong>RSS Feed for Daily Contemplation:</strong> <a href="https://meormine.github.io/asubha-practice/asubha.xml" target="_blank" rel="noopener noreferrer">https://meormine.github.io/asubha-practice/asubha.xml</a></li>
+            </ul>
+            <p style="margin-top: 15px; font-style: italic;">May this tool serve as a helpful support on the path to uprooting defilements.</p>
+        </div>
+    </div>
+
    <header id="top-bar">
     <h1><i class="fas fa-skull icon-dark"></i><i class="far fa-skull icon-light"></i> Asubha Practice</h1>
     <div style="display: flex; gap: 10px;">
@@ -296,7 +422,7 @@ body.light-mode .icon-dark {
             <h2 style="color: var(--text-muted); margin-top: 20vh;">Loading...</h2>
         </div>
     </main>
-            <script src="asubha.js"></script>
+    <script src="asubha.js"></script>
 
     <script>
    // ==========================================
@@ -321,7 +447,6 @@ function saveFavorites(favs) {
     localStorage.setItem('asubha_favorites', JSON.stringify(favs));
 }
 
-// Fixed version for line 211
 function isCurrentFavorited() {
     const favs = getFavorites();
     return favs.some(f => f.t === currentTextIdx && f.i === currentImgIdx);
@@ -412,7 +537,7 @@ async function loadRandomEntry() {
     if (favs.length === 0) {
         isFavoritesMode = false;
         btnViewFavs.style.color = "var(--text-main)";
-        btnViewFavs.querySelector('i').className = 'far fa-star'; // Add this line
+        btnViewFavs.querySelector('i').className = 'far fa-star'; 
         return loadRandomEntry(); 
     }
             // Sequential cycling
@@ -443,9 +568,8 @@ async function loadRandomEntry() {
             <div class="text-content">${article.text}</div>
             <div class="reference"><strong>From:</strong> ${referenceHTML}</div>
             <div style="display: flex; gap: 10px; margin-top: 15px;">
-                <button class="copy-btn" id="btn-download">
-                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width: 1.1rem; height: 1.1rem; display: inline-block;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
-                </button>
+                <button class="copy-btn" id="btn-info">
+                    <i class="far fa-info-circle"></i></button>
                 <button class="copy-btn" id="copy-text-btn">📋 Copy Text</button>
                 <button class="copy-btn" id="btn-toggle-fav"></button>
             </div>
@@ -455,10 +579,10 @@ async function loadRandomEntry() {
         updateFavButtonUI();
         mainContent.scrollTop = 0;
 
-        // Download Button
-        document.getElementById('btn-download').addEventListener('click', (e) => {
+        // Info Button Trigger Event
+        document.getElementById('btn-info').addEventListener('click', (e) => {
             e.stopPropagation();
-            window.open('https://github.com/meormine/asubha-practice/releases', '_blank');
+            document.getElementById('info-modal').style.display = 'flex';
         });
 
         // Image Click
@@ -518,7 +642,7 @@ btnViewFavs.addEventListener('click', (e) => {
     // Update Icon and Color
     const icon = btnViewFavs.querySelector('i');
     if (isFavoritesMode) {
-        btnViewFavs.style.color = "var(--fav-active)"; // Updated this line
+        btnViewFavs.style.color = "var(--fav-active)"; 
         icon.className = 'fas fa-star';
     } else {
         btnViewFavs.style.color = "var(--text-main)";
@@ -541,14 +665,18 @@ document.body.addEventListener('keydown', (e) => {
     }
 });
 
-// Modal Logic
+// Image Modal Close Logic
 const modalElement = document.getElementById('image-modal');
 document.getElementById('close-modal').addEventListener('click', () => { modalElement.style.display = 'none'; resetZoom(); });
 modalElement.addEventListener('click', (e) => { if (e.target === modalElement) { modalElement.style.display = 'none'; resetZoom(); } });
 
+// Info Modal Close Logic
+const infoModalElement = document.getElementById('info-modal');
+document.getElementById('close-info-modal').addEventListener('click', () => { infoModalElement.style.display = 'none'; });
+infoModalElement.addEventListener('click', (e) => { if (e.target === infoModalElement) { infoModalElement.style.display = 'none'; } });
 
 	// ==========================================
-        // 5. SELF-CENTERING ZOOM & PAN
+        // 6. SELF-CENTERING ZOOM & PAN
         // ==========================================
         let scale = 1;
         let pointX = 0;
@@ -587,7 +715,7 @@ modalElement.addEventListener('click', (e) => { if (e.target === modalElement) {
             e.preventDefault();
             
             const delta = -e.deltaY;
-            const zoomSpeed = 1.15; // Slightly slower for better control
+            const zoomSpeed = 1.15; 
             const oldScale = scale;
 
             if (delta > 0) {
