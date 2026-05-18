@@ -198,17 +198,23 @@
         .info-modal-panel {
             background-color: var(--bg-panel);
             color: var(--text-main);
-            padding: 40px 30px 30px 30px;
             border-radius: 12px;
             max-width: 680px;
             width: 90%;
             max-height: 85vh;
-            overflow-y: auto;
             position: relative;
             box-shadow: 0 8px 32px rgba(0,0,0,0.5);
             border: 1px solid var(--border);
-            line-height: 1.65;
             user-select: text; /* Allow users to copy content inside info modal */
+            display: flex;
+            flex-direction: column;
+            overflow: hidden; /* Keeps the panel boundaries intact */
+        }
+
+        .info-modal-scroll {
+            overflow-y: auto; /* Scroll bar attaches here instead */
+            padding: 40px 30px 30px 30px;
+            line-height: 1.65;
         }
 
         .info-modal-panel h2 {
@@ -352,7 +358,9 @@
     <div id="info-modal" class="modal">
         <div class="info-modal-panel">
             <span class="close-btn" id="close-info-modal"><i class="fas fa-xmark"></i></span>
-            <p>The newly developed <strong>Asubha Practice</strong> web application is designed to be highly intuitive and straightforward, focusing directly on delivering content without unnecessary technical complexity. Rather than focusing on the mechanics of the application, this post explores the profound psychological benefits of <em>asubha-bhāvanā</em> (contemplation of the unbeautiful/foulness of the body) and how this tool can support daily practice.</p>
+            
+            <div class="info-modal-scroll">
+            <p>The <strong>Asubha Practice</strong> web application is designed to be highly intuitive and straightforward, focusing directly on delivering content without unnecessary technical complexity. Rather than focusing on the mechanics of the application, this guide explores the profound psychological benefits of <em>asubha-bhāvanā</em> (contemplation of the unbeautiful/foulness of the body) and how this tool can support daily practice.</p>
             
             <hr>
             
@@ -362,8 +370,7 @@
             <ul>
                 <li><strong>Infection and Replication:</strong> Once a sensual object triggers the mind, the virus of lust infects consciousness, rapidly replicating unwholesome thoughts (<em>akusala-vitakka</em>).</li>
                 <li><strong>Destruction of Faculty:</strong> It consumes mental clarity, destroys spiritual faculties (<em>indriya</em>), and impairs wisdom.</li>
-                <li><strong>Transmission and Exploitation:</strong> Left unchecked, it drives behavior that causes immense suffering, spreading its destructive consequences to others. Extreme historical and contemporary examples of moral downfall—such as the systemic exploitation seen in the case of Jeffrey Epstein—demonstrate how devastatingly this mental pathogen can completely hijack a human being.</li>
-                <li><strong>Samsaric Victims:</strong> While society rightly condemns the actions of such individuals, a deeper Dhamma perspective reveals them as tragic ultimate victims of their own untamed <em>taṇhā</em>. They are deeply infected hosts wandering blindly through <em>saṃsāra</em>, entirely subjugated by delusion and bound to severe karmic results.</li>
+                <li><strong>Transmission:</strong> Left unchecked, it drives behavior that causes immense suffering, spreading its destructive consequences to others and trapping living beings in the cycles of <em>saṃsāra</em>. Extreme historical and contemporary examples of moral downfall demonstrate how devastatingly this mental pathogen can completely hijack an individual.</li>
             </ul>
             
             <hr>
@@ -400,9 +407,25 @@
                 <li><strong>Alternative Link:</strong> <a href="https://asubhapractice.blogspot.com" target="_blank" rel="noopener noreferrer">https://asubhapractice.blogspot.com</a></li>
                 <li><strong>Android App:</strong> <a href="https://archive.org/download/asubha-practice" target="_blank" rel="noopener noreferrer">https://archive.org/download/asubha-practice</a></li>
                 <li><strong>RSS Feed for Daily Contemplation:</strong> <a href="https://meormine.github.io/asubha-practice/asubha.xml" target="_blank" rel="noopener noreferrer">https://meormine.github.io/asubha-practice/asubha.xml</a></li>
+				
+    <li>
+    <strong>Reference Instruction:</strong> 
+    <div style="display: block; width: 100%; aspect-ratio: 16 / 9; background: url('https://i.ytimg.com/vi/ysQ8Zvny5T4/hqdefault.jpg') 50% 50% / cover; border: 0; margin-top: 10px; position: relative; border-radius: 8px; overflow: hidden;">
+        
+        <iframe 
+            allowfullscreen="true" 
+            loading="lazy" 
+            scrolling="no" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; background: transparent;" 
+            src="https://www.youtube.com/embed/ysQ8Zvny5T4">
+        </iframe>
+        
+    </div>
+</li>
             </ul>
             <p style="margin-top: 15px; font-style: italic;">May this tool serve as a helpful support on the path to uprooting defilements.</p>
-        </div>
+        </div> </div>
     </div>
 
    <header id="top-bar">
